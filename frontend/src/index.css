@@ -1,0 +1,85 @@
+/* @tailwind base; */
+/* @tailwind components;
+@tailwind utilities; */
+
+:root {
+  /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
+  line-height: 1.5;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+  /* color-scheme: light dark; */
+  /* color: rgba(255, 255, 255, 0.87); */
+  /* background-color: white; */
+  color: #272727;
+  margin: 0;
+  padding: 0;
+  /* --bg: hsl(0 0% 6%);
+  --fg: hsl(0 0% 90%); */
+  /* font-synthesis: none; */
+  /* text-rendering: optimizeLegibility; */
+  /* -webkit-font-smoothing: antialiased; */
+  /* -moz-osx-font-smoothing: grayscale; */
+  /* -webkit-text-size-adjust: 100%; */
+
+}
+body{
+  margin: 0;
+  padding: 0;
+}
+a {
+  font-weight: 500;
+  text-decoration: none;
+  color: inherit;
+}
+/* a:hover{
+  color: black;
+} */
+li{
+  list-style: none;
+}
+ul{
+  margin: 0;
+}
+/* body {
+   margin: 0; 
+   display: flex;
+  place-items: center; 
+  min-width: 320px;
+  min-height: 100vh;
+} */
+
+/* h1 {
+  line-height: 1.1;
+} */
+
+/* button {
+  border: none;
+  padding: 0; 
+  margin: 0;
+  background: none;
+  font-weight: 500;
+  font-family: inherit;
+  appearance: none; 
+  cursor: pointer;
+  transition: border-color 0.25s;
+} */
+/* button:hover {
+  border-color: #646cff;
+} */
+/* button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+} */
+
+/* @media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+} */

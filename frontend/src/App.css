@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500&display=swap');
+#root {
+  /* max-width: 1880px; */
+  background-color: white;
+
+  margin: 0 auto;
+  /* padding: 1rem; */
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  color: black;
+  /* padding-left: 48px;
+  padding-right: 48px; */
+  /* background-color: #040208; */
+  /* background-color: #030303;
+  background-color: white; */
+  background-color: #fbfbfb;
+}
+html{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+button{
+  font-family: 'Poppins', sans-serif;
+  /* background: none;
+  border: none; */
+  /* appearance: none; */
+}
+/* @keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+/* @media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+} */
+
+/* .card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+} */
+
+/* --------- CATEGORIES --------------- */
+.categories-bar {
+  display: flex;
+  align-items: flex-start;
+  text-align: left;
+  margin-right: 1em;
+  width: 180px;
+}
+
+.categories-bar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.categories-bar ul div {
+  margin: 0 10px 0 0; 
+}
+
+.categories-bar p {
+  margin: 0; 
+  color: #282828;
+  margin-bottom: 0.5em;
+
+
+}
+
+.category-haeder{
+  font-weight: 700;
+  margin-bottom: 1em;
+}
+/* ///////////////////////////////////////////////// */
+.contanier{
+display: flex;
+justify-content: space-between;
+
+}
+/* ///////////////ADMIN PAGE///////////////////////////////// */
+/* MyTabs.css */
+
+/* Style the container to center the tabs */
+.tabs-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+  padding: 16px; 
+  border-radius: 10px;
+}
+
+/* Style the tabs container */
+.MuiTabs-root {
+  background: transparent; /* Remove the background color */
+  color: #333; /* Set your desired text color */
+}
+
+/* Style the active tab */
+.Mui-selected {
+  background: transparent; /* Remove the background color for the active tab */
+}
+
+/* Style the tab labels */
+.MuiTab-labelIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Style the tab icons */
+.MuiSvgIcon-root {
+  font-size: 24px; /* Set your desired icon size */
+  margin: 0 1.3em;
+}
+
+/* /////////////////////ORDER TABLE///////////////////////////////////// */
+.orders-table{
+  margin-top: 2em;
+}
+

@@ -1,0 +1,127 @@
+.product_form_container {
+    max-width: 600px;
+    margin: 2em auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+
+ 
+  }
+  .popup{
+    padding: 2px 5px;
+  }
+ .items_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+
+  }
+  
+  .haeder {
+    font-weight: 600;
+    margin: 0.5em;
+    font-size: 24px;
+  }
+  
+  .product_input,
+  .select,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+  }
+  
+  .product_input textarea {
+    height: 100px;
+  }
+  
+  input[type="file"] {
+    display: block;
+  }
+  input[value] {
+    color: black;
+    font-size: 14px;
+    background-color: white;
+    appearance: none;
+  }
+  .button_container{
+    display: flex;
+    justify-content: center;
+    background-color: aqua;
+    margin-top: 20px; 
+  }
+  .submit_btn{
+    font-family: 'Poppins', sans-serif;
+    border: 1.5px solid #ccc;
+    color: #333;
+    background-color: #272727;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 5px 60px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    transition: all .3s;
+    cursor: pointer;
+  }
+
+.submit_btn:hover{
+  background-color: #3A96DD;
+  color: white;
+}
+/* ... (other styles) ... */
+
+.tooltip {
+  position: relative;
+}
+
+.tooltipText {
+  visibility: hidden;
+  width: 200px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Position the tooltip above the input */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.tooltip:hover .tooltipText {
+  visibility: visible;
+  opacity: 1;
+}
+
+  @media (max-width: 768px) {
+    form {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+.image_preview{
+  max-width: 100%;
+  /* margin-top: 1rem; */
+  text-align: left;
+}
+.preview_img{
+  max-width: 30%; 
+  height: auto;
+  border: 1px solid #5a5a5a; 
+}
+.image_container{
+  display: flex;
+}

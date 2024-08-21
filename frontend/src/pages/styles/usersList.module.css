@@ -1,0 +1,101 @@
+.user_list_container {
+    max-width: 800px;
+    margin: 2em auto;
+    padding: 20px;
+    /* background-color: #f9f9f9; */
+    /* border: 1px solid #ddd; */
+    border-radius: 5px;
+  }
+
+.users_item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    border: 1.5px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 20px 0;
+  }
+  .admin{
+    color: green;
+  }
+  .user_info {
+    flex: 1; 
+    font-size: 18px;
+    margin: 5px 0;
+    font-weight: 600;
+  }
+  
+  .user_span {
+    font-weight: 400;
+  }
+  
+  .button_area {
+    display: flex;
+  }
+  
+  .delete_button,
+  .edit_button {
+    border: 1.5px solid #ccc;
+    color: #333;
+    padding: 3px 10px;
+    margin: 10px 5px;
+    transition: all .3s;
+    cursor: pointer;
+  }
+  .edit_button:hover{
+    background-color: #5272F2;
+    color: white;
+  }
+  .delete_button:hover{
+    background-color: #5272F2;
+    color: white;
+  }
+  .banned{
+    color: rgb(203, 3, 3);
+  }
+  
+  @media (max-width: 768px) {
+    .user_info {
+      font-size: 16px;
+    }
+  }
+  
+  .user-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.user-table th,
+.user-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.user-table th {
+  background-color: #f2f2f2;
+}
+
+/* Styling for action buttons */
+.edit-btn,
+.delete-btn {
+  padding: 6px 10px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  margin-right: 5px;
+  font-size: 14px;
+}
+
+.edit-btn {
+  background-color: #3498db;
+  color: #fff;
+}
+
+.delete-btn {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+/* //////////////////////////////////////// */

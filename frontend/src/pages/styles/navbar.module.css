@@ -1,0 +1,138 @@
+
+/* --------- NAVBAR --------------- */
+
+.navbar {
+  padding: 0 10rem;
+  }
+
+  .navbar a {
+    text-decoration: none;
+    /* color: #ededed; */
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  /* //////////////////////////////////////////// */
+
+  .small_devices_menu{
+    display: none;
+  }
+
+.nav_contanier{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 10px; */
+    padding: 0;
+    width: 100%;
+    color: #1e1e1e;
+}
+.logo_text{
+  font-weight: 600;
+  /* padding-left: 3em; */
+  padding-left: 1em;
+}
+.logo img {
+    width: 150px;
+  }
+  .left_nav,
+.right_nav {
+  display: none; 
+}
+.left_nav{
+    display: flex;
+    align-items: center;
+    /* width: 1300px; */
+}
+.left_nav li{
+    padding: 0 30px;
+    text-align: center;
+}
+
+.right_nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+.login_signup{
+    color: #333;
+    /* color: white; */
+    border-radius: 5px;
+    padding: 3px 5px;
+    margin: 0 10px;
+    transition: all .5s;
+  }
+.login_signup:hover{
+    /* background-color: #5272F2;
+    color: white; */
+    background-color: #1e1e1e;
+    color: white;
+  }
+.mini_cart{
+    padding: 0;
+    margin: 0;
+}
+.mobile_menu_toggle {
+  display: block;
+  cursor: pointer;
+}
+.mobile_menu {
+  /* display: none; 
+  position: absolute; */
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff; 
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+.mobile_menu_items {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile_menu_items li {
+  padding: 10px;
+  /* border-bottom: 1px solid #ccc; */
+}
+.mobile_menu_open {
+  display: block;
+}
+  @media (max-width: 768px) {
+    .navbar {
+      /* flex-direction: column; */
+      padding: 10px;
+    }
+    .logo img {
+        width: 100px;
+      }
+      .left_nav,
+      .right_nav {
+        display: flex; 
+        flex-direction: row; 
+        align-items: center; 
+      }
+      .login_signup {
+        font-size: 14px; /* Reduce font size for smaller screens */
+        padding: 5px 10px; /* Adjust padding for smaller screens */
+      }
+    /* .left_nav,.login_signup{
+        display: none;
+    }
+  
+    .login_signup, .small_devices_menu {
+      margin: 5px 0;
+    }
+    .login_signup{
+        font-size: 14px;
+        background-color: #5272F2;
+        padding: 0;
+        transition: all .5s;
+      }
+    .small_devices_menu {
+      display: block;
+    } */
+
+  }
