@@ -1,8 +1,12 @@
 import { v2 as cloudinary } from 'cloudinary'
 import 'dotenv/config'
-import ApiError from '../errors/ApiError'
+import ApiError from '../errors/ApiError.js'
 
-
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME, 
+  api_key: process.env.CLOUDINARY_API_KEY, 
+  api_secret: process.env.CLOUDINARY_NAME_API_SECERET_KEY
+})
 
 export const uploadToCloudinary = async (image: string, folderName: string): Promise<string> => {
   const response = await cloudinary.uploader.upload(image, {

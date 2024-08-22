@@ -1,7 +1,7 @@
 import express from 'express'
 
-import { handelLogin, handelLogout } from '../controllers/authController'
-import { isLoggedOut, isLoggenIn } from '../middlewares/auth'
+import { handelLogin, handelLogout } from '../controllers/authController.js'
+import { isLoggedOut, isLoggenIn } from '../middlewares/auth.js'
 
 const router = express.Router()
 

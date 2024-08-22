@@ -1,11 +1,11 @@
 import { Model } from 'mongoose'
 import { NextFunction } from 'express'
 
-import User from '../models/userSchema'
-import ApiError from '../errors/ApiError'
-import { UserInterface } from '../types/userTypes'
-import { deleteImage } from '../helper/deletingImageHelper'
-import { deleteFromCloudinary, valueWithoutExtension } from '../helper/cloudinaryHelper'
+import User from '../models/userSchema.js'
+import ApiError from '../errors/ApiError.js'
+import { UserInterface } from '../types/userTypes.js'
+import { deleteImage } from '../helper/deletingImageHelper.js'
+import { deleteFromCloudinary, valueWithoutExtension } from '../helper/cloudinaryHelper.js'
 
 export const getUsers = async (page = 1, limit = 5, search = '') => {
   const countUsers = await User.countDocuments()

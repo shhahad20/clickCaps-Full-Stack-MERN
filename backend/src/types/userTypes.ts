@@ -1,6 +1,6 @@
 import { Document } from 'mongoose'
 
-import { OrderInterface } from './orderInterface'
+import { OrderInterface } from './orderInterface.js'
 
 export interface UserInterface extends Document {
   _id: string

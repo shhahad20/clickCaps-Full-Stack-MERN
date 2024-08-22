@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from 'express'
 import Stripe from 'stripe'
 
-import ApiError from '../errors/ApiError'
-import User from '../models/userSchema'
-import { OrderItem } from '../types/orderInterface'
+import ApiError from '../errors/ApiError.js'
+import User from '../models/userSchema.js'
+import { OrderItem } from '../types/orderInterface.js'
 
 const stripe = new Stripe(
   'sk_test_51OVvNeKgYALNC8Mn8QDSCKWV6Yudpvb7gihmmmE7jYAhQ9HEAhDTlgEdSjkk7XbKmzDamG7cSPZffirYXnuc3BpH00K2H7BbzI'

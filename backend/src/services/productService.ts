@@ -1,9 +1,9 @@
-import ApiError from '../errors/ApiError'
-import { deleteFromCloudinary, valueWithoutExtension } from '../helper/cloudinaryHelper'
-import { deleteImage } from '../helper/deletingImageHelper'
-import { Category } from '../models/categorySchema'
-import Product from '../models/productSchema'
-import { ProductInterface } from '../types/productTypes'
+import ApiError from '../errors/ApiError.js'
+import { deleteFromCloudinary, valueWithoutExtension } from '../helper/cloudinaryHelper.js'
+import { deleteImage } from '../helper/deletingImageHelper.js'
+import { Category } from '../models/categorySchema.js'
+import Product from '../models/productSchema.js'
+import { ProductInterface } from '../types/productTypes.js'
 
 export const getProducts = async (
   page = 1,

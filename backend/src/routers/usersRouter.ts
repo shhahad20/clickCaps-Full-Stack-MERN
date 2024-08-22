@@ -13,15 +13,15 @@ import {
   resetPassword,
   adminUser,
   unadminUser,
-} from '../controllers/userControllers'
+} from '../controllers/userControllers.js'
 import {
   creatUserValidator,
   forgetPasswordValidator,
   updateUserValidator,
-} from '../validation/userVaildation'
-import { runValidation, runValidationUser } from '../validation/index'
-import { upload } from '../middlewares/uploadFile'
-import { isAdmin, isLoggedOut, isLoggenIn } from '../middlewares/auth'
+} from '../validation/userVaildation.js'
+import { runValidation, runValidationUser } from '../validation/index.js'
+import { upload } from '../middlewares/uploadFile.js'
+import { isAdmin, isLoggedOut, isLoggenIn } from '../middlewares/auth.js'
 
 const router = express.Router()
 

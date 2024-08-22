@@ -7,7 +7,7 @@ export const registeringEmail = (
   const emailData = {
     email: email,
     subject: 'Activate your account',
-    html: `<h1>Hello ${first_name} ${last_name}</h1> <p>You can acticate your account by clicking on the Activate link below.
+    html: `<h1>Hello ${first_name} ${last_name}</h1> <p>You can activate your account by clicking on the Activate link below.
   Note: the Link vaild for one hour</p>
   <a href="http://localhost:3000/api/users/activate/${token}">Clink here to activate</a>      `,
   }

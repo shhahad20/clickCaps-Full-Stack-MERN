@@ -1,11 +1,12 @@
 {
   "name": "express-demo",
   "version": "1.0.0",
-  "main": "server.ts",
+  "main": "dist/api/index.js",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "ts-watch": "tsc -w",
-    "start": "nodemon api/server.ts"
+    "start": "nodemon dist/api/index.js"
   },
   "dependencies": {
     "@types/bcrypt": "^5.0.2",

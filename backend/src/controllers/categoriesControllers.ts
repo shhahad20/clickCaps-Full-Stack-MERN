@@ -2,15 +2,15 @@ import { NextFunction, Request, Response } from 'express'
 import mongoose from 'mongoose'
 import slugify from 'slugify'
 
-import ApiError from '../errors/ApiError'
+import ApiError from '../errors/ApiError.js'
 import {
   createCategory,
   deleteCategoryById,
   getCategories,
   getCategoryById,
   updateCategory,
-} from '../services/categoriesServices'
-import { Category } from '../models/categorySchema'
+} from '../services/categoriesServices.js'
+import { Category } from '../models/categorySchema.js'
 
 export const getAllCategories = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -61,6 +61,7 @@ export const getSingleCategory = async (req: Request, res: Response, next: NextF
 
 export const addCategory = async (req: Request, res: Response, next: NextFunction) => {
   try {
+    console.log("Stage 1")
     const { title } = req.body
     await createCategory(title)
     res.status(201).json({

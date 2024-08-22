@@ -1,11 +1,14 @@
 import mongoose from 'mongoose'
 import { NextFunction, Request, Response } from 'express'
-import jwt, { TokenExpiredError, JwtPayload } from 'jsonwebtoken'
-import bcrypt from 'bcrypt'
+// import jwt, { TokenExpiredError, JwtPayload } from 'jsonwebtoken'
+import * as jwt from 'jsonwebtoken';
 
-import User from '../models/userSchema'
-import ApiError from '../errors/ApiError'
-import { emailSender } from '../helper/sendEmail'
+import bcrypt from 'bcrypt'
+import {dev} from '../config/index.js'
+
+import User from '../models/userSchema.js'
+import ApiError from '../errors/ApiError.js'
+import { emailSender } from '../helper/sendEmail.js'
 import {
   findUserAndDelete,
   findUserById,
@@ -13,14 +16,14 @@ import {
   isExist,
   updateBanStatusById,
   updateRoleStatusById,
-} from '../services/userServices'
-import generateToken from '../util/gernerateToken'
-import { forgetPasswordEmail, registeringEmail } from '../helper/emails'
+} from '../services/userServices.js'
+import generateToken from '../util/gernerateToken.js'
+import { forgetPasswordEmail, registeringEmail } from '../helper/emails.js'
 import {
   deleteFromCloudinary,
   uploadToCloudinary,
   valueWithoutExtension,
-} from '../helper/cloudinaryHelper'
+} from '../helper/cloudinaryHelper.js'
 
 
 const DEFAULT_IMAGES_PATH = 'public/images/usersImages/default/usrImage.png'
@@ -80,7 +83,7 @@ export const deleteUserById = async (req: Request, res: Response, next: NextFunc
       message: `You deleted a user`,
     })
   } catch (error) {
-    if (error instanceof TokenExpiredError) {
+    if (error instanceof jwt.TokenExpiredError) {
       const error = new ApiError(400, `Not vaild id`)
       next(error)
     } else {
@@ -113,7 +116,7 @@ export const registerUser = async (req: Request, res: Response, next: NextFuncti
       tokenPayload.image = imagePath
     }
     const tokenPayloadObject = tokenPayload.toObject()
-    const token = generateToken(tokenPayloadObject, RESETPASSWORD_KEY, '60m')
+    const token = generateToken(tokenPayloadObject, dev.jwt.reset_k, '60m')
     const emailToSend = registeringEmail(email, first_name, last_name, token)
     await emailSender(emailToSend)
 
@@ -174,7 +177,7 @@ export const activateUser = async (req: Request, res: Response, next: NextFuncti
       next(ApiError.notFound('Plesae provide a vaild token'))
       return
     }
-    const decodedUserData = jwt.verify(token, ACTIVATION_KEY) as JwtPayload
+    const decodedUserData = jwt.verify(token, dev.jwt.activate_k) as jwt.JwtPayload
     if (!decodedUserData) {
       next(ApiError.unauthorized('Invaild token'))
       return
@@ -190,7 +193,7 @@ export const activateUser = async (req: Request, res: Response, next: NextFuncti
       message: 'User is registered successfully',
     })
   } catch (error) {
-    if (error instanceof TokenExpiredError) {
+    if (error instanceof jwt.TokenExpiredError) {
       next(ApiError.unauthorized('Token has expired'))
     } else {
       next(error)
@@ -239,7 +242,7 @@ export const forgetPassword = async (req: Request, res: Response, next: NextFunc
       next(ApiError.notFound(`${email} not exisits`))
       return
     }
-    const token = generateToken({ email }, RESETPASSWORD_KEY, '60m')
+    const token = generateToken({ email }, dev.jwt.reset_k, '60m')
     const emailToSend = forgetPasswordEmail(email, user.first_name, user.last_name, token)
     await emailSender(emailToSend)
 
@@ -262,7 +265,7 @@ export const resetPassword = async (req: Request, res: Response, next: NextFunct
     if (password !== confirmPassword) {
       throw ApiError.unauthorized('Passwords does not match')
     }
-    const decoded = jwt.verify(token, RESETPASSWORD_KEY) as JwtPayload
+    const decoded = jwt.verify(token, dev.jwt.reset_k) as jwt.JwtPayload
     if (!decoded) {
       next(ApiError.unauthorized('Invaild token'))
       return
@@ -280,7 +283,7 @@ export const resetPassword = async (req: Request, res: Response, next: NextFunct
       message: 'Password is resteted successfully',
     })
   } catch (error) {
-    if (error instanceof TokenExpiredError) {
+    if (error instanceof jwt.TokenExpiredError) {
       next(ApiError.unauthorized('Token has expired'))
     } else {
       next(error)

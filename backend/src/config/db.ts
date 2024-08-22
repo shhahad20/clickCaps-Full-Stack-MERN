@@ -3,7 +3,6 @@ import { dev } from '.'
 import 'dotenv/config'
 
 const mongoURI = process.env.MONGODB_URI;
-console.log("MONGODB_URI:", process.env.MONGODB_URI);
 
 if (!mongoURI) {
   throw new Error('MONGODB_URI is not defined in environment variables');

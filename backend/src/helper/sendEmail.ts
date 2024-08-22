@@ -1,21 +1,22 @@
 import nodemailer from 'nodemailer'
+import 'dotenv/config'
 
-import { EmailDataType } from '../types/types'
+import { EmailDataType } from '../types/types.js'
 
-
+ 
 export const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
   port: 587,
   secure: false,
   auth: {
-    user: SMTP_USERNAME,
-    pass: SMTP_PASSWORD,
+    user: process.env.SMTP_USERNAME,
+    pass: process.env.SMTP_PASSWORD,
   },
 })
 export const emailSender = async (emailData: EmailDataType) => {
   try {
     const mailOptions = {
-      from: SMTP_USERNAME,
+      from: process.env.SMTP_USERNAME,
       to: emailData.email,
       subject: emailData.subject,
       html: emailData.html,

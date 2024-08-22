@@ -1,17 +1,18 @@
 import slugify from 'slugify'
 import { Request, Response, NextFunction } from 'express'
 import mongoose from 'mongoose'
+import * as jwt from 'jsonwebtoken';
 
-import ApiError from '../errors/ApiError'
-import Product from '../models/productSchema'
-import { ProductInterface } from '../types/productTypes'
-import { findProductById, getProducts, removeProductById } from '../services/productService'
-import { TokenExpiredError } from 'jsonwebtoken'
+import ApiError from '../errors/ApiError.js'
+import Product from '../models/productSchema.js'
+import { ProductInterface } from '../types/productTypes.js'
+import { findProductById, getProducts, removeProductById } from '../services/productService.js'
+// import { TokenExpiredError } from 'jsonwebtoken'
 import {
   deleteFromCloudinary,
   uploadToCloudinary,
   valueWithoutExtension,
-} from '../helper/cloudinaryHelper'
+} from '../helper/cloudinaryHelper.js'
 
 // Get All Products
 export const getAllProducts = async (
@@ -148,7 +149,7 @@ export const deleteProductById = async (req: Request, res: Response, next: NextF
       message: `You deleted a product`,
     })
   } catch (error) {
-    if (error instanceof TokenExpiredError) {
+    if (error instanceof jwt.TokenExpiredError) {
       const error = new ApiError(400, `Not vaild id`)
       next(error)
     } else {

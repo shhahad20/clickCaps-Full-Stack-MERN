@@ -1,5 +1,5 @@
 import { Document } from 'mongoose'
-import { CategoryInterface } from './categoriesInterface'
+import { CategoryInterface } from './categoriesInterface.js'
 
 export interface ProductInterface extends Document {
   name: string
