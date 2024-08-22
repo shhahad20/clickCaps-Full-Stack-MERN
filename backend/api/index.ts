@@ -6,15 +6,15 @@ import morgan from 'morgan'
 import cookieParser from 'cookie-parser'
 import 'dotenv/config'
 
-import apiErrorHandler from '../src/middlewares/errorHandler'
-import myLogger from '../src/middlewares/logger'
-import usersRouter from '../src/routers/usersRouter'
-import productsRouter from '../src/routers/productsRouter'
-import ordersRouter from '../src/routers/ordersRouter'
-import categoriesRouter from '../src/routers/categoriesRouter'
-import authRouter from '../src/routers/authRouter'
-import homeRouter from '../src/routers/homeRouter'
-import { connectDB } from '../src/config/db'
+import apiErrorHandler from '../src/middlewares/errorHandler.js'
+import myLogger from '../src/middlewares/logger.js'
+import usersRouter from '../src/routers/usersRouter.js'
+import productsRouter from '../src/routers/productsRouter.js'
+import ordersRouter from '../src/routers/ordersRouter.js'
+import categoriesRouter from '../src/routers/categoriesRouter.js'
+import authRouter from '../src/routers/authRouter.js'
+import homeRouter from '../src/routers/homeRouter.js'
+import { connectDB } from '../src/config/db.js'
 
 config()
 const app = express()
@@ -28,21 +28,22 @@ app.use(cookieParser())
 app.use(myLogger)
 app.use(morgan('dev'))
 app.use(cors({
-  origin: 'http://localhost:3000',
-  credentials: true,
+  origin: '*',
+  credentials: true
 }));
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+console.log("Hi server")
 
 app.use('/', homeRouter)
-app.use('/api/users', usersRouter)
-app.use('/api/auth', authRouter)
-app.use('/api/orders', ordersRouter)
-app.use('/api/products', productsRouter)
-app.use('/api/categories', categoriesRouter)
+app.use('/users', usersRouter)
+app.use('/auth', authRouter)
+app.use('/orders', ordersRouter)
+app.use('/products', productsRouter)
+app.use('/categories', categoriesRouter)
 
-app.use(apiErrorHandler)
+// app.use(apiErrorHandler)
 
 app.listen(PORT, async () => {
   console.log('Server running http://localhost:' + PORT)

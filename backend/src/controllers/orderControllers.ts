@@ -1,13 +1,13 @@
 import { NextFunction, Request, Response } from 'express'
 import mongoose from 'mongoose'
 
-import ApiError from '../errors/ApiError'
-import Order from '../models/orderSchema'
-import Product from '../models/productSchema'
-import User from '../models/userSchema'
-import { emailSender } from '../helper/sendEmail'
-import { OrderInterface, OrderItem } from '../types/orderInterface'
-import { OrderCreatedEmail, OrderUpdatedEmail } from '../helper/emails'
+import ApiError from '../errors/ApiError.js'
+import Order from '../models/orderSchema.js'
+import Product from '../models/productSchema.js'
+import User from '../models/userSchema.js'
+import { emailSender } from '../helper/sendEmail.js'
+import { OrderInterface, OrderItem } from '../types/orderInterface.js'
+import { OrderCreatedEmail, OrderUpdatedEmail } from '../helper/emails.js'
 
 export const getAllOrders = async (req: Request, res: Response, next: NextFunction) => {
   try {

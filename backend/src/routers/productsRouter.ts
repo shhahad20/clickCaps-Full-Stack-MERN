@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-import { upload } from '../middlewares/uploadProductsFile'
+import { upload } from '../middlewares/uploadProductsFile.js'
 
 import {
   createProduct,
@@ -10,10 +10,10 @@ import {
   getProductById,
   // getProductBySlug,
   updateProductById,
-} from '../controllers/productControllers'
-import { runValidation } from '../validation/index'
-import { createProductValidator, updateProductValidator } from '../validation/productsValidation'
-import { isAdmin, isLoggenIn } from '../middlewares/auth'
+} from '../controllers/productControllers.js'
+import { runValidation } from '../validation/index.js'
+import { createProductValidator, updateProductValidator } from '../validation/productsValidation.js'
+import { isAdmin, isLoggenIn } from '../middlewares/auth.js'
 
 const router = Router()
 

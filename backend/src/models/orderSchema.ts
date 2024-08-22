@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose'
 
-import { OrderInterface } from '../types/orderInterface'
+import { OrderInterface } from '../types/orderInterface.js'
 
 const orderSchema = new mongoose.Schema(
   {

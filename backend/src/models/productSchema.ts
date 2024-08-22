@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose'
 
-import { ProductInterface } from '../types/productTypes'
+import { ProductInterface } from '../types/productTypes.js'
 
  const productSchema = new Schema(
   {

@@ -1,7 +1,7 @@
 import { Document } from 'mongoose'
 
-import { ProductInterface } from '../types/productTypes'
-import { UserInterface } from './userTypes'
+import { ProductInterface } from '../types/productTypes.js'
+import { UserInterface } from './userTypes.js'
 
 export interface OrderItem {
   _id: string

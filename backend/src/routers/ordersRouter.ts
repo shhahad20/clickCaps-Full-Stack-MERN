@@ -8,9 +8,9 @@ import {
   getOrderById,
   updateOrder,
   updateOrderByUser,
-} from '../controllers/orderControllers'
-import { isAdmin, isLoggenIn } from '../middlewares/auth'
-import { checkoutOrder, stripeCheckout } from '../controllers/stripeControllers'
+} from '../controllers/orderControllers.js'
+import { isAdmin, isLoggenIn } from '../middlewares/auth.js'
+import { checkoutOrder, stripeCheckout } from '../controllers/stripeControllers.js'
 
 const ordersRouter = express.Router()
 

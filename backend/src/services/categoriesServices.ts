@@ -1,9 +1,9 @@
 import slugify from 'slugify'
 import { SortOrder } from 'mongoose'
 
-import ApiError from '../errors/ApiError'
-import { Category } from '../models/categorySchema'
-import { CategoryInterface } from '../types/categoriesInterface'
+import ApiError from '../errors/ApiError.js'
+import { Category } from '../models/categorySchema.js'
+import { CategoryInterface } from '../types/categoriesInterface.js'
 
 export const getCategories = async (
   page: number,

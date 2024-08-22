@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose'
 
-import { UserInterface } from '../types/userTypes'
+import { UserInterface } from '../types/userTypes.js'
 
 const IMAGES_PATH = "public/images/usersImages/default/usrImage.png"
 

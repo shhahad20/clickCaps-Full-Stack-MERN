@@ -1,10 +1,14 @@
 import { NextFunction, Request, Response } from 'express'
 import bcrypt from 'bcrypt'
-import jwt, { TokenExpiredError } from 'jsonwebtoken'
-
-import User from '../models/userSchema'
-import ApiError from '../errors/ApiError'
-import generateToken from '../util/gernerateToken'
+// import jwt,  {TokenExpiredError}  from 'jsonwebtoken'
+// import pkg from 'jsonwebtoken';
+// const { TokenExpiredError } = pkg;
+import * as jwt from 'jsonwebtoken';
+import 'dotenv/config'
+import {dev} from '../config/index.js'
+import User from '../models/userSchema.js'
+import ApiError from '../errors/ApiError.js'
+import generateToken from '../util/gernerateToken.js'
 
 
 export const handelLogin = async (req: Request, res: Response, next: NextFunction) => {
@@ -29,7 +33,7 @@ export const handelLogin = async (req: Request, res: Response, next: NextFunctio
       throw error
     }
     const userId = user._id
-    const accessToken = jwt.sign({ _id: user._id }, ACCESS_KEY, { expiresIn: '1h' })
+    const accessToken = jwt.sign({ _id: user._id }, dev.jwt.key, { expiresIn: '1h' })
     // const accessToken = generateToken(userId)
     res.cookie('access_token', accessToken, {
       maxAge: 60 * 60 * 1000,

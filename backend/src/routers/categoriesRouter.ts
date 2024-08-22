@@ -6,10 +6,10 @@ import {
   getAllCategories,
   getSingleCategory,
   updateSingleCategory,
-} from '../controllers/categoriesControllers'
-import { categoryValidation } from '../validation/categoryValidator'
-import { runValidation } from '../validation/index'
-import { isAdmin, isLoggenIn } from '../middlewares/auth'
+} from '../controllers/categoriesControllers.js'
+import { categoryValidation } from '../validation/categoryValidator.js'
+import { runValidation } from '../validation/index.js'
+import { isAdmin, isLoggenIn } from '../middlewares/auth.js'
 
 const categoriesRouter = Router()
 
