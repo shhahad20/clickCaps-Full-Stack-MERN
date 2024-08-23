@@ -58,7 +58,7 @@ export const getSingleCategory = async (req: Request, res: Response, next: NextF
     }
   }
 }
-
+ 
 export const addCategory = async (req: Request, res: Response, next: NextFunction) => {
   try {
     console.log("Stage 1")
