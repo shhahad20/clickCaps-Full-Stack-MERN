@@ -18,7 +18,7 @@ categoriesRouter.get('/', getAllCategories)
 categoriesRouter.get('/:id', getSingleCategory)
 
 // categoriesRouter.post('/', isLoggenIn, isAdmin, categoryValidation, runValidation, addCategory)
-categoriesRouter.post('/', addCategory)
+categoriesRouter.post('/', categoryValidation, runValidation, addCategory)
 
 // categoriesRouter.put(
 //   '/:id',
@@ -28,10 +28,7 @@ categoriesRouter.post('/', addCategory)
 //   runValidation,
 //   updateSingleCategory
 // )
-categoriesRouter.put(
-  '/:id',
-  updateSingleCategory
-)
+categoriesRouter.put('/:id', categoryValidation, runValidation, updateSingleCategory)
 // categoriesRouter.delete('/:id', isLoggenIn, isAdmin, deleteCategory)
 categoriesRouter.delete('/:id', deleteCategory)
 

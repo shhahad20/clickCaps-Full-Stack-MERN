@@ -34,7 +34,6 @@ app.use(cors({
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-console.log("Hi server")
 
 app.use('/', homeRouter)
 app.use('/users', usersRouter)
@@ -43,7 +42,7 @@ app.use('/orders', ordersRouter)
 app.use('/products', productsRouter)
 app.use('/categories', categoriesRouter)
 
-// app.use(apiErrorHandler)
+app.use(apiErrorHandler)
 
 app.listen(PORT, async () => {
   console.log('Server running http://localhost:' + PORT)

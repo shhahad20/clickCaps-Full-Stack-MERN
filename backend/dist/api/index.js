@@ -4,6 +4,7 @@ import { config } from 'dotenv';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import 'dotenv/config';
+import apiErrorHandler from '../src/middlewares/errorHandler.js';
 import myLogger from '../src/middlewares/logger.js';
 import usersRouter from '../src/routers/usersRouter.js';
 import productsRouter from '../src/routers/productsRouter.js';
@@ -26,14 +27,13 @@ app.use(cors({
 }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-console.log("Hi server");
 app.use('/', homeRouter);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
 app.use('/orders', ordersRouter);
 app.use('/products', productsRouter);
 app.use('/categories', categoriesRouter);
-// app.use(apiErrorHandler)
+app.use(apiErrorHandler);
 app.listen(PORT, async () => {
     console.log('Server running http://localhost:' + PORT);
 });
