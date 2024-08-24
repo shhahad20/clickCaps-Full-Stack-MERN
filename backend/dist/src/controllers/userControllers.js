@@ -99,7 +99,7 @@ export const registerUser = async (req, res, next) => {
             tokenPayload.image = imagePath;
         }
         const tokenPayloadObject = tokenPayload.toObject();
-        const token = generateToken(tokenPayloadObject, dev.jwt.reset_k, '60m');
+        const token = generateToken(tokenPayloadObject, dev.jwt.activate_k, '60m');
         const emailToSend = registeringEmail(email, first_name, last_name, token);
         await emailSender(emailToSend);
         res.status(200).json({
@@ -155,17 +155,32 @@ export const updateUser = async (req, res, next) => {
 export const activateUser = async (req, res, next) => {
     try {
         // const {token}  = req.body
-        const token = req.params.token;
+        const token = String(req.params.token);
         console.log(token);
         if (!token) {
             next(ApiError.notFound('Please provide a valid token'));
             return;
         }
         console.log('p 1');
-        const decodedUserData = jwt.verify(token, dev.jwt.activate_k);
-        if (!decodedUserData) {
-            next(ApiError.unauthorized('Invaild token'));
-            return;
+        let decodedUserData;
+        try {
+            decodedUserData = jwt.verify(token, dev.jwt.activate_k);
+            console.log('Decoded user data:', decodedUserData);
+        }
+        catch (err) {
+            if (err instanceof jwt.JsonWebTokenError) {
+                next(ApiError.unauthorized('Invalid token'));
+                return;
+            }
+            else if (err instanceof jwt.TokenExpiredError) {
+                next(ApiError.unauthorized('Token has expired'));
+                return;
+            }
+            else {
+                console.log('Error verifying token:', err);
+                next(err);
+                return;
+            }
         }
         const cloudinaryUrl = await uploadToCloudinary(decodedUserData.image, 'Full-Stack-Project/Users');
         console.log('p 4');
