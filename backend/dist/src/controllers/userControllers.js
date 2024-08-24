@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-// import jwt, { TokenExpiredError, JwtPayload } from 'jsonwebtoken'
-import * as jwt from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
+// import * as jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt';
 import { dev } from '../config/index.js';
 import User from '../models/userSchema.js';
@@ -154,33 +154,62 @@ export const updateUser = async (req, res, next) => {
 };
 export const activateUser = async (req, res, next) => {
     try {
-        // const token = String(req.query.token)
-        const { token } = req.body;
+        // const {token}  = req.body
+        const token = req.params.token;
+        console.log(token);
         if (!token) {
-            next(ApiError.notFound('Plesae provide a vaild token'));
+            next(ApiError.notFound('Please provide a valid token'));
             return;
         }
+        console.log('p 1');
         const decodedUserData = jwt.verify(token, dev.jwt.activate_k);
         if (!decodedUserData) {
             next(ApiError.unauthorized('Invaild token'));
             return;
         }
         const cloudinaryUrl = await uploadToCloudinary(decodedUserData.image, 'Full-Stack-Project/Users');
+        console.log('p 4');
         decodedUserData.image = cloudinaryUrl;
         await User.create(decodedUserData);
-        res.status(201).json({
-            message: 'User is registered successfully',
+        console.log('p 5');
+        res.status(200).json({
+            message: 'User account activated successfully',
         });
     }
     catch (error) {
-        if (error instanceof jwt.TokenExpiredError) {
-            next(ApiError.unauthorized('Token has expired'));
-        }
-        else {
-            next(error);
-        }
+        console.log('Error in activateUser:', error);
+        next(error);
     }
 };
+// export const activateUser = async (req: Request, res: Response, next: NextFunction) => {
+//   try {
+//     const {token}  = req.body
+//     if (!token) {
+//       next(ApiError.notFound('Plesae provide a vaild token'))
+//       return
+//     }
+//     const decodedUserData = jwt.verify(token, dev.jwt.activate_k) as jwt.JwtPayload
+//     if (!decodedUserData) {
+//       next(ApiError.unauthorized('Invaild token'))
+//       return
+//     }
+//     const cloudinaryUrl = await uploadToCloudinary(
+//       decodedUserData.image,
+//       'Full-Stack-Project/Users'
+//     )
+//     decodedUserData.image = cloudinaryUrl
+//     await User.create(decodedUserData)
+//     res.status(201).json({
+//       message: 'User is registered successfully',
+//     })
+//   } catch (error) {
+//     if (error instanceof jwt.TokenExpiredError) {
+//       next(ApiError.unauthorized('Token has expired'))
+//     } else {
+//       next(error)
+//     }
+//   }
+// }
 export const banUser = async (req, res, next) => {
     try {
         const id = req.params.userId;

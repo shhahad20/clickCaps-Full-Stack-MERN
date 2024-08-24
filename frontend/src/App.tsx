@@ -40,9 +40,9 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signup-message" element={<SignUpMessage />} />
         <Route path="/forget-password" element={<ForgetPassword />} />
-        <Route path="/api/users/reset-password/:token" element={<ResetPassword pathName="" />} />
+        <Route path="/users/reset-password/:token" element={<ResetPassword pathName="" />} />
 
-        <Route path="/api/users/activate/:token" element={<Activate />} />
+        <Route path="/users/activate/:token" element={<Activate />} />
         <Route path="/profile" element={<Profile />} />
 
         {/* USER ROUTE */}

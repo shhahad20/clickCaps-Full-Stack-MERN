@@ -56,7 +56,7 @@ const initialState: UserState = {
 
 export const fetchUser = createAsyncThunk('user/fetchUser', async (page: number) => {
   try {
-    const response = await axios.get(`${baseURL}/api/users?page=${page}`)
+    const response = await axios.get(`${baseURL}/users?page=${page}`)
     return response.data.payload
   } catch (error) {
     console.log(error)
@@ -64,7 +64,7 @@ export const fetchUser = createAsyncThunk('user/fetchUser', async (page: number)
 })
 export const fetchUserById = createAsyncThunk('user/fetchUserById', async (id: string) => {
   try {
-    const response = await axios.get(`${baseURL}/api/users/${id}`)
+    const response = await axios.get(`${baseURL}/users/${id}`)
     return response.data.payload
   } catch (error) {
     console.log(error)
@@ -72,7 +72,7 @@ export const fetchUserById = createAsyncThunk('user/fetchUserById', async (id: s
 })
 export const registerUser = createAsyncThunk('user/registerUser', async (newUserData: FormData) => {
   try {
-    const response = await axios.post(`${baseURL}/api/users/registering`, newUserData)
+    const response = await axios.post(`${baseURL}/users/registering`, newUserData)
     return response.data
   } catch (error) {
     console.log(error)
@@ -80,7 +80,7 @@ export const registerUser = createAsyncThunk('user/registerUser', async (newUser
 })
 export const activateUser = async (token: string) => {
   try {
-    const response = await axios.post(`${baseURL}/api/users/activate`, { token })
+    const response = await axios.post(`${baseURL}/users/activate`, { token })
     return response.data
   } catch (error) {
     console.log(error)
@@ -88,7 +88,7 @@ export const activateUser = async (token: string) => {
 }
 export const deleteUser = createAsyncThunk('user/deleteUser', async (id: string) => {
   try {
-    const response = await axios.delete(`${baseURL}/api/users/${id}`)
+    const response = await axios.delete(`${baseURL}/users/${id}`)
     return response.data.payload
   } catch (error) {
     console.log(error)
@@ -96,7 +96,7 @@ export const deleteUser = createAsyncThunk('user/deleteUser', async (id: string)
 })
 export const banUser = createAsyncThunk('user/banUser', async (id: string) => {
   try {
-    const response = await axios.put(`${baseURL}/api/users/ban/${id}`)
+    const response = await axios.put(`${baseURL}/users/ban/${id}`)
     console.log('Banned a user ' + response.data.payload)
     return response.data.payload
   } catch (error) {
@@ -105,7 +105,7 @@ export const banUser = createAsyncThunk('user/banUser', async (id: string) => {
 })
 export const unbanUser = createAsyncThunk('user/unbanUser', async (id: string) => {
   try {
-    const response = await axios.put(`${baseURL}/api/users/unban/${id}`)
+    const response = await axios.put(`${baseURL}/users/unban/${id}`)
     console.log('Unbanned a user ' + response.data.payload)
     return response.data.payload
   } catch (error) {
@@ -114,7 +114,7 @@ export const unbanUser = createAsyncThunk('user/unbanUser', async (id: string) =
 })
 export const adminUser = createAsyncThunk('user/adminUser', async (id: string) => {
   try {
-    const response = await axios.put(`${baseURL}/api/users/adminrole/${id}`)
+    const response = await axios.put(`${baseURL}/users/adminrole/${id}`)
     console.log('Role of user id Admin ' + response.data.payload)
     return response.data.payload
   } catch (error) {
@@ -123,7 +123,7 @@ export const adminUser = createAsyncThunk('user/adminUser', async (id: string) =
 })
 export const unadminUser = createAsyncThunk('user/unadminUser', async (id: string) => {
   try {
-    const response = await axios.put(`${baseURL}/api/users/unadminrole/${id}`)
+    const response = await axios.put(`${baseURL}/users/unadminrole/${id}`)
     console.log('Unadmin a user ' + response.data.payload)
     return response.data.payload
   } catch (error) {
@@ -134,7 +134,7 @@ export const updateUser = createAsyncThunk(
   'user/updateUser',
   async ({ id, updatedData }: { id: string; updatedData: FormData }) => {
     try {
-      const response = await axios.put(`${baseURL}/api/users/${id}`, updatedData)
+      const response = await axios.put(`${baseURL}/users/${id}`, updatedData)
       console.log('Update a user ' + response.data.payload)
       return response.data.payload
     } catch (error) {
@@ -145,7 +145,7 @@ export const updateUser = createAsyncThunk(
 
 export const loginUser = createAsyncThunk('user/loginUser', async (loginData: object) => {
   try {
-    const response = await axios.post(`${baseURL}/api/auth/login`, loginData)
+    const response = await axios.post(`${baseURL}/auth/login`, loginData)
     return response.data
   } catch (error) {
     console.log(error)
@@ -153,7 +153,7 @@ export const loginUser = createAsyncThunk('user/loginUser', async (loginData: ob
 })
 export const logoutUser = createAsyncThunk('user/logoutUser', async () => {
   try {
-    const response = await axios.post(`${baseURL}/api/auth/logout`)
+    const response = await axios.post(`${baseURL}/auth/logout`)
     return response.data
   } catch (error) {
     console.log(error)
@@ -161,7 +161,7 @@ export const logoutUser = createAsyncThunk('user/logoutUser', async () => {
 })
 export const forgetPassword = async (email: string) => {
   try {
-    const response = await axios.post(`${baseURL}/api/users/forget-password`, { email })
+    const response = await axios.post(`${baseURL}/users/forget-password`, { email })
     return response.data
   } catch (error) {
     console.log(error)
@@ -169,7 +169,7 @@ export const forgetPassword = async (email: string) => {
 }
 export const resetPassword = async (token: string, password: string, confirmPassword: string) => {
   try {
-    const response = await axios.post(`${baseURL}/api/users/reset-password`, {
+    const response = await axios.post(`${baseURL}/users/reset-password`, {
       token,
       password,
       confirmPassword

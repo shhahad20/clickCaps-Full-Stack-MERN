@@ -24,7 +24,7 @@ import { upload } from '../middlewares/uploadFile.js'
 import { isAdmin, isLoggedOut, isLoggenIn } from '../middlewares/auth.js'
 
 const router = express.Router()
-
+ 
 // router.get('/', isLoggenIn, isAdmin, getAllUsers)
 router.get('/', getAllUsers)
 
@@ -48,7 +48,7 @@ router.post(
   upload.single('image'),
   registerUser
 )
-router.post('/activate', activateUser)
+router.post('/activate/:token', activateUser)
 // router.put('/ban/:userId', isLoggenIn, isAdmin, banUser)
 router.put('/ban/:userId', banUser)
 // router.put('/unban/:userId', isLoggenIn, isAdmin, unbanUser)

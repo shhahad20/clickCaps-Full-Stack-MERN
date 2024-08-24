@@ -19,7 +19,7 @@ router.delete('/:userId', deleteUserById);
 //   registerUser
 // )
 router.post('/registering', creatUserValidator, runValidationUser, upload.single('image'), registerUser);
-router.post('/activate', activateUser);
+router.post('/activate/:token', activateUser);
 // router.put('/ban/:userId', isLoggenIn, isAdmin, banUser)
 router.put('/ban/:userId', banUser);
 // router.put('/unban/:userId', isLoggenIn, isAdmin, unbanUser)

@@ -4,7 +4,7 @@ export const registeringEmail = (email, first_name, last_name, token) => {
         subject: 'Activate your account',
         html: `<h1>Hello ${first_name} ${last_name}</h1> <p>You can activate your account by clicking on the Activate link below.
   Note: the Link vaild for one hour</p>
-  <a href="http://localhost:3000/api/users/activate/${token}">Clink here to activate</a>      `,
+  <a href="http://localhost:3000/users/activate/${token}">Clink here to activate</a>      `,
     };
     return emailData;
 };
@@ -14,7 +14,7 @@ export const forgetPasswordEmail = (email, first_name, last_name, token) => {
         subject: 'Forgot Password',
         html: `<h1>Hello ${first_name} ${last_name}</h1> 
     <p>We received a request to reset your password. Please click the link below to create a new password:</p>
-    <a href="http://localhost:3000/api/users/reset-password/${token}">Reset Password</a> 
+    <a href="http://localhost:3000/users/reset-password/${token}">Reset Password</a> 
     <p>If you didn't request a password reset, you can ignore this email.</p>
     <p>Best regards,<br>Developer Shahad</p>     `,
     };
