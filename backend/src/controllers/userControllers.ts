@@ -169,14 +169,12 @@ export const updateUser = async (req: Request, res: Response, next: NextFunction
 }
 export const activateUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    // const {token}  = req.body
-    const token = String(req.params.token)
-    console.log(token)
+    const {token}  = req.body;
+    // const token = String(req.params.token)
       if (!token) {
       next(ApiError.notFound('Please provide a valid token'))
       return
-    }
-    console.log('p 1')
+    } 
     let decodedUserData: JwtPayload;
     try {
       decodedUserData = jwt.verify(token, dev.jwt.activate_k) as JwtPayload;
@@ -198,12 +196,8 @@ export const activateUser = async (req: Request, res: Response, next: NextFuncti
       decodedUserData.image,
       'Full-Stack-Project/Users'
     )
-
-    console.log('p 4')
     decodedUserData.image = cloudinaryUrl
     await User.create(decodedUserData)
-    console.log('p 5')
-
     res.status(200).json({
       message: 'User account activated successfully',
     })

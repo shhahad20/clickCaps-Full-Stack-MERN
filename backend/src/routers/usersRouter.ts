@@ -48,7 +48,7 @@ router.post(
   upload.single('image'),
   registerUser
 )
-router.post('/activate/:token', activateUser)
+router.post('/activate', activateUser)
 // router.put('/ban/:userId', isLoggenIn, isAdmin, banUser)
 router.put('/ban/:userId', banUser)
 // router.put('/unban/:userId', isLoggenIn, isAdmin, unbanUser)
