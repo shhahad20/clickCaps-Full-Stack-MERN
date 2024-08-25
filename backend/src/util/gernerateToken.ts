@@ -13,5 +13,5 @@ const generateToken = (tokenPayload: object, secretKey: string, expiresIn: strin
     throw error
   }
 }
-
+ 
 export default generateToken

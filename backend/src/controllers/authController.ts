@@ -1,9 +1,6 @@
 import { NextFunction, Request, Response } from 'express'
 import bcrypt from 'bcrypt'
-// import jwt,  {TokenExpiredError}  from 'jsonwebtoken'
-// import pkg from 'jsonwebtoken';
-// const { TokenExpiredError } = pkg;
-import * as jwt from 'jsonwebtoken';
+// import * as jwt from 'jsonwebtoken';
 import 'dotenv/config'
 import {dev} from '../config/index.js'
 import User from '../models/userSchema.js'
@@ -31,10 +28,10 @@ export const handelLogin = async (req: Request, res: Response, next: NextFunctio
     if (user.isBanned) {
       const error = new ApiError(403, `User is banned. For more info contact us.`)
       throw error
-    }
+    } 
     const userId = user._id
-    const accessToken = jwt.sign({ _id: user._id }, dev.jwt.key, { expiresIn: '1h' })
-    // const accessToken = generateToken(userId)
+    // const accessToken = jwt.sign({ _id: user._id }, dev.jwt.key, { expiresIn: '1h' })
+    const accessToken = generateToken({ _id: user._id },dev.jwt.key, '1h'  )
     res.cookie('access_token', accessToken, {
       maxAge: 60 * 60 * 1000,
       httpOnly: true,
